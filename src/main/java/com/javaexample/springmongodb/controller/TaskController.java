@@ -1,8 +1,8 @@
 package com.javaexample.springmongodb.controller;
 
 import com.javaexample.springmongodb.dto.TaskDto;
-import com.javaexample.springmongodb.request.CreateRequest;
-import com.javaexample.springmongodb.request.UpdateRequest;
+import com.javaexample.springmongodb.request.CreateTaskRequest;
+import com.javaexample.springmongodb.request.UpdateTaskRequest;
 import com.javaexample.springmongodb.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,12 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping()
-    public TaskDto save(@RequestBody CreateRequest task) {
+    public TaskDto save(@RequestBody CreateTaskRequest task) {
         return taskService.save(task);
     }
 
     @PutMapping("/{id}")
-    public TaskDto update(@PathVariable String id, @RequestBody UpdateRequest taskRequest) {
+    public TaskDto update(@PathVariable String id, @RequestBody UpdateTaskRequest taskRequest) {
         return taskService.update(id, taskRequest);
     }
 

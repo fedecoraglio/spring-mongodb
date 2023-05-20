@@ -2,8 +2,8 @@ package com.javaexample.springmongodb.mapper;
 
 import com.javaexample.springmongodb.dto.TaskDto;
 import com.javaexample.springmongodb.model.Task;
-import com.javaexample.springmongodb.request.CreateRequest;
-import com.javaexample.springmongodb.request.UpdateRequest;
+import com.javaexample.springmongodb.request.CreateTaskRequest;
+import com.javaexample.springmongodb.request.UpdateTaskRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,10 +20,10 @@ public class TaskMapper {
     public TaskDto mapEntityToDto(final Task task) {
         return modelMapper.map(task, TaskDto.class);
     }
-    public Task mapRequestToEntity(final CreateRequest taskRequest) {
+    public Task mapRequestToEntity(final CreateTaskRequest taskRequest) {
         return modelMapper.map(taskRequest, Task.class);
     }
-    public Task mapRequestToEntity(final UpdateRequest taskRequest) {
+    public Task mapRequestToEntity(final UpdateTaskRequest taskRequest) {
         return modelMapper.map(taskRequest, Task.class);
     }
     public List<TaskDto> mapEntitiesToDtos(final List<Task> tasks) {

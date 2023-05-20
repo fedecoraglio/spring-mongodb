@@ -5,8 +5,8 @@ import com.javaexample.springmongodb.exception.SpringMongodbException;
 import com.javaexample.springmongodb.mapper.TaskMapper;
 import com.javaexample.springmongodb.model.Task;
 import com.javaexample.springmongodb.repository.TaskRepository;
-import com.javaexample.springmongodb.request.CreateRequest;
-import com.javaexample.springmongodb.request.UpdateRequest;
+import com.javaexample.springmongodb.request.CreateTaskRequest;
+import com.javaexample.springmongodb.request.UpdateTaskRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class TaskService {
     @Autowired
     private TaskMapper taskMapper;
 
-    public TaskDto save(final CreateRequest taskRequest) {
+    public TaskDto save(final CreateTaskRequest taskRequest) {
         try {
             final Task task = this.taskMapper.mapRequestToEntity(taskRequest);
             task.setId(UUID.randomUUID().toString().split("-")[0]);
@@ -66,7 +66,7 @@ public class TaskService {
 
     }
 
-    public TaskDto update(final String id, final UpdateRequest taskRequest) {
+    public TaskDto update(final String id, final UpdateTaskRequest taskRequest) {
         final Optional<Task> optional = taskRepository.findById(id);
         if(!optional.isPresent()) {
             throw new SpringMongodbException(SpringMongodbException.Type.TASK_IS_NOT_FOUND);
